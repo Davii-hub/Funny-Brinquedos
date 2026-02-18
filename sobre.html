@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/sobre.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #fa6632;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            position: relative;
+            background-color: #4dbce9;
+        }
+
+        .logo-container {
+            position: relative;
+            height: 140px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            width: 250px;
+            transition: left 1s ease-in-out, opacity 1s ease-in-out;
+            opacity: 0;
+            z-index: 1;
+        }
+
+        .menu {
+            background-color: #4dbce9;
+            padding: 15px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+            margin-top: 90px;
+        }
+
+        .menu ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+            gap: 20px;
+        }
+
+        .menu ul li a {
+            display: inline-block;
+            text-decoration: none;
+            font-weight: bold;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .menu ul li:nth-child(1) a { background-color: #CF0638; } 
+        .menu ul li:nth-child(2) a { background-color: #FA6632; } 
+        .menu ul li:nth-child(3) a { background-color: #FECD23; } 
+        .menu ul li:nth-child(4) a { background-color: #0A996F; } 
+        .menu ul li:nth-child(5) a { background-color: #0A6789; } 
+        .menu ul li:nth-child(6) a { background-color: #CF0638; } 
+
+        .menu ul li a:hover {
+            transform: scale(1.15) rotate(-1deg);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        main {
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .animated-text {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: justify;
+            color: white;
+        }
+
+        .image-row {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .image-row img {
+            width: 300px;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        footer {
+            background-color: #4dbce9;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 60px;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const logo = document.getElementById('logo');
+            logo.style.left = '0';
+
+            function centerLogo() {
+                const centerX = (window.innerWidth - logo.offsetWidth) / 2;
+                logo.style.left = `${centerX}px`;
+                logo.style.opacity = 1;
+            }
+
+            setTimeout(centerLogo, 200);
+            window.addEventListener('resize', centerLogo);
+        });
+
+        function animarTexto(elemento, texto, index = 0) {
+            if (index < texto.length) {
+                elemento.innerHTML += texto.charAt(index);
+                setTimeout(() => animarTexto(elemento, texto, index + 1), 40);
+            }
+        }
+
+        window.onload = function () {
+            animarTexto(document.getElementById("texto-sobre"),
+                "A Funny Brinquedos nasceu em 2020, em um cantinho colorido cheio de sonhos e imaginação, começamos como uma pequena loja de bairro com brinquedos feitos à mão, pensados com carinho para encantar cada criança, com dedicação e muito amor pelo universo infantil, conquistamos famílias e espalhamos sorrisos por onde passamos, a ideia surgiu do desejo de criar um lugar mágico onde brincar fosse levado a sério! A Funny Brinquedos foi fundada para transformar o simples ato de brincar em uma experiência rica de aprendizado, afeto e criatividade, queríamos oferecer brinquedos que estimulassem a imaginação, a amizade e a alegria e tudo com segurança e muito cuidado, ao longo dos anos, crescemos junto com nossos pequenos clientes! Ampliamos nosso catálogo, ganhamos espaço no mundo digital e recebemos mensagens de carinho de famílias de todo o país, ver cada criança feliz com nossos brinquedos é a maior recompensa, e o melhor de tudo: estamos só começando!");
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="../img/logoloja.png" alt="Logo da Loja" class="logo" id="logo">
+        </div>
+        <nav class="menu">
+            <ul>
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="../pages/sobre.html">Sobre</a></li>
+                <li><a href="../pages/brinq.html">Brinquedos</a></li>
+                <li><a href="../pages/presente.html">Presente por Idade</a></li>
+                <li><a href="../pages/evento.html">Eventos</a></li>
+                <li><a href="../pages/form.html">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Sobre a Funny Brinquedos</h1>
+        <div id="texto-sobre" class="animated-text"></div>
+
+        <div class="image-row">
+            <img src="../img/party.png" alt="Crianças Felizes">
+            <img src="../img/present.png" alt="Criança abrindo presente">
+            <img src="../img/kid.png" alt="Lego e criança">
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Funny Brinquedos. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

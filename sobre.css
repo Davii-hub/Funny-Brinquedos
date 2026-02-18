@@ -1,0 +1,75 @@
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #fff;
+}
+
+header {
+  position: relative;
+  background-color: #4dbce9;
+}
+
+.logo-container {
+  position: relative;
+  height: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  width: 250px;
+  transition: left 1s ease-in-out, opacity 1s ease-in-out;
+  opacity: 0;
+  z-index: 1;
+}
+
+.menu {
+  background-color: #4dbce9;
+  padding: 15px 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 2;
+  margin-top: 90px;
+}
+
+.menu ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  gap: 20px;
+}
+
+.menu ul li a {
+  display: inline-block;
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.menu ul li:nth-child(1) a { background-color: #CF0638; } 
+.menu ul li:nth-child(2) a { background-color: #FA6632; } 
+.menu ul li:nth-child(3) a { background-color: #FECD23; } 
+.menu ul li:nth-child(4) a { background-color: #0A996F; } 
+.menu ul li:nth-child(5) a { background-color: #0A6789; } 
+.menu ul li:nth-child(6) a { background-color: #CF0638; } 
+
+.menu ul li a:hover {
+  transform: scale(1.15) rotate(-1deg);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+footer {
+      background-color: #4dbce9;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+    }

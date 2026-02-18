@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Presente por Idade</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #0A996F;
+      color: white;
+    }
+
+    header {
+      background-color: #4dbce9;
+      position: relative;
+    }
+
+    .logo-container {
+      height: 140px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 0;
+      width: 250px;
+      transition: left 1s ease-in-out, opacity 1s ease-in-out;
+      opacity: 0;
+      z-index: 1;
+    }
+
+    .menu {
+      background-color: #4dbce9;
+      padding: 15px 0;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      position: relative;
+      z-index: 2;
+      margin-top: 90px;
+    }
+
+    .menu ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+      gap: 20px;
+    }
+
+    .menu ul li a {
+      display: inline-block;
+      text-decoration: none;
+      font-weight: bold;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .menu ul li:nth-child(1) a { background-color: #CF0638; }
+    .menu ul li:nth-child(2) a { background-color: #FA6632; }
+    .menu ul li:nth-child(3) a { background-color: #FECD23; }
+    .menu ul li:nth-child(4) a { background-color: #0A996F; }
+    .menu ul li:nth-child(5) a { background-color: #0A6789; }
+    .menu ul li:nth-child(6) a { background-color: #CF0638; }
+
+    .menu ul li a:hover {
+      transform: scale(1.15) rotate(-1deg);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .intro {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      padding: 40px 20px;
+      gap: 20px;
+    }
+
+    .intro img {
+      max-width: 100%;
+      width: 400px;
+      border-radius: 20px;
+      flex: 1 1 400px;
+    }
+
+    .intro-text {
+      flex: 1 1 500px;
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+
+    .animacao-bolinhas {
+      width: 100%;
+      height: 400px;
+      background: #0A996F;
+      margin: 40px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 4px solid #4dbce9;
+    }
+
+    canvas {
+      width: 100%;
+      height: 100%;
+    }
+
+    .cards-idade {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 20px;
+    }
+
+    .card-idade {
+      background-color: #4dbce9;
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      width: 220px;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+      color: white;
+    }
+
+    .card-idade img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .card-idade h3 {
+      margin: 15px 0 10px;
+    }
+
+    .card-idade button {
+      background-color: #0A996F;
+      border: none;
+      color: white;
+      padding: 10px 15px;
+      font-weight: bold;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .card-idade:hover {
+      transform: scale(1.05);
+    }
+
+    .brinquedos-lista {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+      background-color: #0A996F;
+      border-radius: 20px;
+      margin: 40px auto;
+      width: 90%;
+      max-width: 1000px;
+    }
+
+    .brinquedos-imgs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .brinquedos-imgs img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .lista-brinquedos {
+      margin-top: 20px;
+      text-align: left;
+      max-width: 500px;
+    }
+
+    footer {
+      background-color: #4dbce9;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="../img/logoloja.png" alt="Logo da Loja" class="logo" id="logo" />
+    </div>
+    <nav class="menu">
+      <ul>
+        <li><a href="../index.html">Início</a></li>
+        <li><a href="../pages/sobre.html">Sobre</a></li>
+        <li><a href="../pages/brinq.html">Brinquedos</a></li>
+        <li><a href="../pages/presente.html">Presente por Idade</a></li>
+        <li><a href="../pages/evento.html">Eventos</a></li>
+        <li><a href="../pages/form.html">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="intro">
+    <img src="../img/presenteinicio.png" alt="Criança recebendo presente">
+    <div class="intro-text">
+      <p>Escolher o presente ideal para uma criança pode ser uma tarefa desafiadora, mas também muito gratificante. Cada faixa etária traz diferentes interesses, habilidades em desenvolvimento e necessidades emocionais. Entender essas fases é essencial para acertar no presente e proporcionar momentos de diversão, aprendizado e carinho.<br><br>Durante os primeiros anos, os bebês precisam de brinquedos que estimulem os sentidos e a coordenação motora. À medida que crescem, as crianças exploram mais o mundo ao seu redor e ganham autonomia, exigindo brinquedos mais interativos.<br><br>Dos 4 aos 6 anos, a imaginação floresce, e os brinquedos simbólicos ganham destaque. Já dos 7 aos 9 anos, o raciocínio lógico e a criatividade se desenvolvem ainda mais, tornando jogos de tabuleiro e kits de montar muito atrativos.<br><br>A partir dos 10 anos, as crianças começam a buscar atividades mais desafiadoras e socialmente integradas. Brinquedos tecnológicos, esportivos ou que incentivem habilidades artísticas são ideais.<br><br>Na adolescência, dos 14 aos 16 anos, os presentes devem considerar gostos pessoais, hobbies e a identidade em formação. Jogos modernos, artigos de decoração, livros e itens colecionáveis são boas escolhas.<br><br>E para jovens de 17 anos ou mais, os presentes devem respeitar sua individualidade, senso estético e interesses próprios. A ideia é ir além do brinquedo tradicional e oferecer itens úteis, criativos ou que despertem memórias afetivas.</p>
+    </div>
+  </section>
+
+  <div class="animacao-bolinhas">
+    <canvas id="canvas"></canvas>
+  </div>
+
+  <section class="cards-idade">
+    <div class="card-idade">
+      <img src="../img/idade0a3.png" alt="0 a 3 anos">
+      <h3>0 a 3 anos</h3>
+      <button onclick="mostrarBrinquedos('faixa0a3')">Ver sugestões</button>
+    </div>
+    <div class="card-idade">
+      <img src="../img/idade4a6.png" alt="4 a 6 anos">
+      <h3>4 a 6 anos</h3>
+      <button onclick="mostrarBrinquedos('faixa4a6')">Ver sugestões</button>
+    </div>
+    <div class="card-idade">
+      <img src="../img/idade7a9.png" alt="7 a 9 anos">
+      <h3>7 a 9 anos</h3>
+      <button onclick="mostrarBrinquedos('faixa7a9')">Ver sugestões</button>
+    </div>
+    <div class="card-idade">
+      <img src="../img/idade10a12.png" alt="10 a 12 anos">
+      <h3>10 a 12 anos</h3>
+      <button onclick="mostrarBrinquedos('faixa10a12')">Ver sugestões</button>
+    </div>
+    <div class="card-idade">
+      <img src="../img/idade14a16.png" alt="14 a 16 anos">
+      <h3>14 a 16 anos</h3>
+      <button onclick="mostrarBrinquedos('faixa14a16')">Ver sugestões</button>
+    </div>
+    <div class="card-idade">
+      <img src="../img/ida17.png" alt="17+ anos">
+      <h3>17+ anos</h3>
+      <button onclick="mostrarBrinquedos('faixa17mais')">Ver sugestões</button>
+    </div>
+  </section>
+
+  <div id="faixa0a3" class="brinquedos-lista">
+    <h3>Sugestões para 0 a 3 anos</h3>
+    <div class="brinquedos-imgs">
+      <img src="../img/chocalhocolorido.png" alt="Brinquedo 1">
+      <img src="../img/livrodetecido.png" alt="Brinquedo 2">
+      <img src="../img/empurrar.png" alt="Brinquedo 3">
+      <img src="../img/instmusicbebe.png" alt="Brinquedo 4">
+    </div>
+    <ul class="lista-brinquedos">
+      <li>Chocalho Colorido</li>
+      <li>Móbile Musical</li>
+      <li>Tapete Interativo</li>
+      <li>Livros de tecido</li>
+      <li>Cubo didático</li>
+      <li>Blocos grandes</li>
+      <li>Brinquedos de encaixar</li>
+      <li>Bonecos macios</li>
+      <li>Brinquedos de empurrar</li>
+      <li>Instrumentos musicais para bebês</li>
+    </ul>
+  </div>
+
+  <div id="faixa4a6" class="brinquedos-lista">
+    <h3>Sugestões para 4 a 6 anos</h3>
+    <div class="brinquedos-imgs">
+      <img src="../img/massinha.png" alt="Brinquedo 5">
+      <img src="../img/fantoche.png" alt="Brinquedo 6">
+      <img src="../img/bonecoarticulado.png" alt="Brinquedo 7">
+      <img src="../img/jogodamemoria.png" alt="Brinquedo 8">
+    </div>
+    <ul class="lista-brinquedos">
+      <li>Massinha de modelar</li>
+      <li>Blocos de montar</li>
+      <li>Quebra-cabeça</li>
+      <li>Livros ilustrados</li>
+      <li>Bonecos articulados</li>
+      <li>Instrumentos musicais infantis</li>
+      <li>Jogos de memória</li>
+      <li>Peças de montar</li>
+      <li>Fantoches</li>
+      <li>Kit de pintura</li>
+    </ul>
+  </div>
+
+
+  <div id="faixa7a9" class="brinquedos-lista">
+    <h3>Sugestões para 7 a 9 anos</h3>
+    <div class="brinquedos-imgs">
+      <img src="../img/lego.png" alt="Brinquedo 9">
+      <img src="../img/slime.png" alt="Brinquedo 10">
+      <img src="../img/tabuleiro.png" alt="Brinquedo 11">
+      <img src="../img/kitciencias.png" alt="Brinquedo 12">
+    </div>
+    <ul class="lista-brinquedos">
+      <li>Jogo de tabuleiro</li>
+      <li>Kit de ciências</li>
+      <li>Livros infantis</li>
+      <li>Bonecos de ação</li>
+      <li>Lego</li>
+      <li>Pista de carrinhos</li>
+      <li>Slime</li>
+      <li>Pintura a dedo</li>
+      <li>Jogos educativos</li>
+      <li>Cartas de desafio</li>
+    </ul>
+  </div>
+
+  <div id="faixa10a12" class="brinquedos-lista">
+    <h3>Sugestões para 10 a 12 anos</h3>
+    <div class="brinquedos-imgs">
+      <img src="../img/jogocarta.png" alt="Brinquedo 13">
+      <img src="../img/robotica.png" alt="Brinquedo 14">
+      <img src="../img/miniaturas.png" alt="Brinquedo 15">
+      <img src="../img/desenho.png" alt="Brinquedo 16">
+    </div>
+    <ul class="lista-brinquedos">
+      <li>Jogos de estratégia</li>
+      <li>Livros de aventura</li>
+      <li>Kits de robótica</li>
+      <li>Material de desenho</li>
+      <li>Miniaturas de coleção</li>
+      <li>Fones de ouvido</li>
+      <li>Mini games</li>
+      <li>Kits de ciência</li>
+      <li>Filmes ou livros juvenis</li>
+      <li>Jogos de cartas</li>
+    </ul>
+  </div>
+
+  <div id="faixa14a16" class="brinquedos-lista">
+    <h3>Sugestões para 14 a 16 anos</h3>
+    <div class="brinquedos-imgs">
+      <img src="../img/kitsdiy.png" alt="Brinquedo 17">
+      <img src="../img/skate.png" alt="Brinquedo 18">
+      <img src="../img/patinete.png" alt="Brinquedo 19">
+      <img src="../img/jogologica.png" alt="Brinquedo 20">
+    </div>
+    <ul class="lista-brinquedos">
+      <li>Fones bluetooth</li>
+      <li>Livros favoritos</li>
+      <li>Kits de DIY</li>
+      <li>Jogos de lógica</li>
+      <li>Canecas personalizadas</li>
+      <li>Power banks</li>
+      <li>Skate ou patinete</li>
+      <li>Brinquedos de coleção</li>
+      <li>Jogos online</li>
+      <li>Iluminação decorativa</li>
+    </ul>
+  </div>
+
+  <div id="faixa17mais" class="brinquedos-lista">
+    <h3>Sugestões para 17 anos ou mais</h3>
+    <div class="brinquedos-imgs">
+      <img src="../img/headphone.png" alt="Brinquedo 21">
+      <img src="../img/canecas.png" alt="Brinquedo 22">
+      <img src="../img/luminaria.png" alt="Brinquedo 23">
+      <img src="../img/decorativo.png" alt="Brinquedo 24">
+    </div>
+    <ul class="lista-brinquedos">
+      <li>Livros clássicos</li>
+      <li>Quadros decorativos</li>
+      <li>Artigos de papelaria</li>
+      <li>Jogos criativos</li>
+      <li>Canecas com frases</li>
+      <li>Headphones</li>
+      <li>Agendas temáticas</li>
+      <li>Mini luminárias</li>
+      <li>Pelúcias diferentes</li>
+      <li>Itens geek</li>
+    </ul>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Funny Brinquedos. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const logo = document.getElementById('logo');
+      logo.style.left = '0';
+      function centerLogo() {
+        const centerX = (window.innerWidth - logo.offsetWidth) / 2;
+        logo.style.left = `${centerX}px`;
+        logo.style.opacity = 1;
+      }
+      setTimeout(centerLogo, 200);
+      window.addEventListener('resize', centerLogo);
+
+      const canvas = document.getElementById('canvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = canvas.clientWidth;
+      canvas.height = canvas.clientHeight;
+      const bolas = [];
+      for (let i = 0; i < 30; i++) {
+        bolas.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          raio: 10 + Math.random() * 10,
+          cor: `hsl(${Math.random() * 360}, 80%, 60%)`,
+          dx: (Math.random() - 0.5) * 4,
+          dy: (Math.random() - 0.5) * 4
+        });
+      }
+      function desenhar() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let b of bolas) {
+          ctx.beginPath();
+          ctx.arc(b.x, b.y, b.raio, 0, Math.PI * 2);
+          ctx.fillStyle = b.cor;
+          ctx.fill();
+          b.x += b.dx;
+          b.y += b.dy;
+          if (b.x < b.raio || b.x > canvas.width - b.raio) b.dx *= -1;
+          if (b.y < b.raio || b.y > canvas.height - b.raio) b.dy *= -1;
+        }
+        requestAnimationFrame(desenhar);
+      }
+      desenhar();
+    });
+
+    function mostrarBrinquedos(faixaId) {
+      const selecionado = document.getElementById(faixaId);
+      const isVisible = selecionado.style.display === 'flex';
+      document.querySelectorAll('.brinquedos-lista').forEach(lista => {
+        lista.style.display = 'none';
+      });
+      if (!isVisible) {
+        selecionado.style.display = 'flex';
+        selecionado.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  </script>
+</body>
+</html>

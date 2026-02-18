@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Brinquedos</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #FECD23;
+      color: white;
+    }
+
+    header {
+      position: relative;
+      background-color: #4dbce9;
+    }
+
+    .logo-container {
+      position: relative;
+      height: 140px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 0;
+      width: 250px;
+      transition: left 1s ease-in-out, opacity 1s ease-in-out;
+      opacity: 0;
+      z-index: 1;
+    }
+
+    .menu {
+      background-color: #4dbce9;
+      padding: 15px 0;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      position: relative;
+      z-index: 2;
+      margin-top: 90px;
+    }
+
+    .menu ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+      gap: 20px;
+    }
+
+    .menu ul li a {
+      display: inline-block;
+      text-decoration: none;
+      font-weight: bold;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .menu ul li:nth-child(1) a { background-color: #CF0638; }
+    .menu ul li:nth-child(2) a { background-color: #FA6632; }
+    .menu ul li:nth-child(3) a { background-color: #FECD23; }
+    .menu ul li:nth-child(4) a { background-color: #0A996F; }
+    .menu ul li:nth-child(5) a { background-color: #0A6789; }
+    .menu ul li:nth-child(6) a { background-color: #CF0638; }
+
+    .menu ul li a:hover {
+      transform: scale(1.15) rotate(-1deg);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .intro {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 40px 20px;
+      text-align: justify;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .intro img {
+      max-width: 300px;
+      height: auto;
+      border-radius: 12px;
+    }
+
+    .intro p {
+      max-width: 600px;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .cards-iniciais {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 30px 20px;
+      flex-wrap: wrap;
+    }
+
+    .card-personagem {
+      background-color: #FECD23;
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      width: 280px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
+    }
+
+    .card-personagem:hover {
+      transform: scale(1.05);
+    }
+
+    .card-personagem img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .card-personagem button {
+      background-color: #4dbce9;
+      color: white;
+      font-weight: bold;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .card-personagem button:hover {
+      background-color: #0a8ac2;
+    }
+
+    .card-brinquedo {
+      background-color: #FECD23;
+      border-radius: 12px;
+      padding: 15px;
+      margin: 20px;
+      text-align: center;
+      width: 220px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      color: white;
+    }
+
+    .card-brinquedo img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .cards-container {
+      display: none;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    footer {
+      background-color: #4dbce9;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-container">
+      <img src="../img/logoloja.png" alt="Logo da Loja" class="logo" id="logo" />
+    </div>
+    <nav class="menu">
+      <ul>
+        <li><a href="../index.html">Início</a></li>
+        <li><a href="../pages/sobre.html">Sobre</a></li>
+        <li><a href="../pages/brinq.html">Brinquedos</a></li>
+        <li><a href="../pages/presente.html">Presente por Idade</a></li>
+        <li><a href="../pages/evento.html">Eventos</a></li>
+        <li><a href="../pages/form.html">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="intro">
+    <img src="../img/brinquedosinicio.png" alt="Imagem brinquedo introdutório">
+    <p>
+      Na Funny Brinquedos, acreditamos que brincar é a melhor forma de aprender. Nosso catálogo é recheado de opções divertidas, educativas e seguras para todas as idades. Com brinquedos pensados para estimular a criatividade, coordenação e o desenvolvimento cognitivo das crianças, temos certeza que aqui você encontrará o presente perfeito. Navegue pelas categorias, explore as novidades e prepare-se para ver muitos sorrisos!
+    </p>
+  </section>
+
+  <section class="cards-iniciais">
+    <div class="card-personagem">
+      <img src="../img/menino.png" alt="Brinquedos para Meninos" />
+      <button onclick="mostrarBrinquedos('menino')">Ver mais</button>
+    </div>
+    <div class="card-personagem">
+      <img src="../img/menina.png" alt="Brinquedos para Meninas" />
+      <button onclick="mostrarBrinquedos('menina')">Ver mais</button>
+    </div>
+  </section>
+
+  <section class="cards-container" id="brinquedos-menino">
+    <div class="card-brinquedo"><img src="../img/carrinho.png" alt="Carrinho" /><h3>Carrinhos Turbo</h3><p>Velocidade e emoção nas corridas com os amigos!</p></div>
+    <div class="card-brinquedo"><img src="../img/jogomontar.png" alt="Montar" /><h3>Jogo de Montar</h3><p>Peças coloridas para desenvolver a criatividade.</p></div>
+    <div class="card-brinquedo"><img src="../img/game.png" alt="Game" /><h3>Game Portátil</h3><p>Diversão em qualquer lugar com jogos clássicos.</p></div>
+    <div class="card-brinquedo"><img src="../img/dino.png" alt="Dinossauro" /><h3>Dinossauro Robô</h3><p>Com som e luzes para aventuras jurássicas.</p></div>
+    <div class="card-brinquedo"><img src="../img/avião.png" alt="Avião" /><h3>Avião de Controle</h3><p>Pilote com emoção e liberdade.</p></div>
+    <div class="card-brinquedo"><img src="../img/hero.png" alt="Herói" /><h3>Super Heróis</h3><p>Bonecos articulados para salvar o mundo.</p></div>
+    <div class="card-brinquedo"><img src="../img/tanque.png" alt="Tanque" /><h3>Tanque de Guerra</h3><p>Com efeitos sonoros e visuais de combate.</p></div>
+    <div class="card-brinquedo"><img src="../img/espada.png" alt="Espada" /><h3>Espada de Luz</h3><p>Lute como um cavaleiro galáctico iluminado.</p></div>
+    <div class="card-brinquedo"><img src="../img/robo.png" alt="Robô" /><h3>Robô Falante</h3><p>Interage com as crianças de forma educativa.</p></div>
+    <div class="card-brinquedo"><img src="../img/pista.png" alt="Pista" /><h3>Pista de Corrida</h3><p>Monte e acelere em disputas emocionantes!</p></div>
+  </section>
+
+  <section class="cards-container" id="brinquedos-menina">
+    <div class="card-brinquedo"><img src="../img/boneca.png" alt="Boneca" /><h3>Boneca Encantada</h3><p>Linda, mágica e cheia de estilo! A melhor amiga para todas as aventuras.</p></div>
+    <div class="card-brinquedo"><img src="../img/casinha.png" alt="Casinha" /><h3>Casinha de Bonecas</h3><p>Detalhes fofos e móveis delicados para imaginar muitas histórias.</p></div>
+    <div class="card-brinquedo"><img src="../img/unicornio.png" alt="Unicórnio" /><h3>Unicórnio de Pelúcia</h3><p>Fofo, macio e colorido, perfeito para abraçar e levar para todo lugar.</p></div>
+    <div class="card-brinquedo"><img src="../img/cozinha.png" alt="Cozinha" /><h3>Kit Culinária Kids</h3><p>Panelinhas, comidinhas e muita criatividade para brincar de chef!</p></div>
+    <div class="card-brinquedo"><img src="../img/make.png" alt="Unicórnio" /><h3>Maleta de Maquiagem</h3><p>Com brilhos, batons e espelhinho. Uma maleta completa para brincar!</p></div>
+    <div class="card-brinquedo"><img src="../img/bailarina.png" alt="Bailarina" /><h3>Bailarina</h3><p>Ela dança, gira e brilha! Um espetáculo encantador para as pequenas artistas.</p></div>
+    <div class="card-brinquedo"><img src="../img/salão.png" alt="Salão de Beleza" /><h3>Mini Salão de Beleza</h3><p>Secador, escova e espelho para criar os penteados mais lindos.</p></div>
+    <div class="card-brinquedo"><img src="../img/pet.png" alt="Pet Shop" /><h3>Pet Shop Portátil</h3><p>Cuide dos animaizinhos com acessórios fofos neste pet shop de brincar.</p></div>
+    <div class="card-brinquedo"><img src="../img/ponei.png" alt="Pônei" /><h3>Pônei Colorido</h3><p>Cabelos coloridos e muita fofura em um pônei para passeios mágicos.</p></div>
+    <div class="card-brinquedo"><img src="../img/carruagem.png" alt="Carruagem Real" /><h3>Carruagem Real</h3><p>Leve suas bonecas em uma jornada encantada com essa carruagem de princesa!</p></div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Funny Brinquedos. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const logo = document.getElementById('logo');
+      logo.style.left = '0';
+
+      function centerLogo() {
+        const centerX = (window.innerWidth - logo.offsetWidth) / 2;
+        logo.style.left = `${centerX}px`;
+        logo.style.opacity = 1;
+      }
+
+      setTimeout(centerLogo, 200);
+      window.addEventListener('resize', centerLogo);
+    });
+
+    function mostrarBrinquedos(tipo) {
+      const containerMenino = document.getElementById('brinquedos-menino');
+      const containerMenina = document.getElementById('brinquedos-menina');
+
+      containerMenino.style.display = 'none';
+      containerMenina.style.display = 'none';
+
+      if (tipo === 'menino') {
+        containerMenino.style.display = 'flex';
+        window.scrollTo({ top: containerMenino.offsetTop - 80, behavior: 'smooth' });
+      } else if (tipo === 'menina') {
+        containerMenina.style.display = 'flex';
+        window.scrollTo({ top: containerMenina.offsetTop - 80, behavior: 'smooth' });
+      }
+    }
+  </script>
+
+</body>
+</html>

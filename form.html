@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
+    <link rel="stylesheet" href="../css/style.css">
+      <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #CF0638;
+      color: white;
+    }
+
+    .contato-container {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 40px;
+      gap: 40px;
+      justify-content: center;
+    }
+
+    .contato-esquerda, .contato-direita {
+      flex: 1;
+      min-width: 320px;
+      max-width: 500px;
+    }
+
+    .contato-esquerda h2,
+    .contato-direita h2 {
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    .info-contato p {
+      margin: 8px 0;
+    }
+
+    iframe {
+      width: 100%;
+      height: 250px;
+      border: none;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .form-container {
+      background: #CF0638;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+      color: white;
+    }
+
+    .form-group {
+      position: relative;
+      margin-bottom: 25px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px 10px 10px 5px;
+      border: none;
+      border-bottom: 2px solid #ccc;
+      background: transparent;
+      font-size: 16px;
+      color: white;
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: white;
+    }
+
+    input:focus, textarea:focus {
+      border-bottom: 2px solid #4dbce9;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+      outline: none;
+    }
+
+    label {
+      position: absolute;
+      top: 10px;
+      left: 5px;
+      color: white;
+      font-size: 16px;
+      transition: 0.3s ease all;
+      pointer-events: none;
+    }
+
+    input:focus ~ label,
+    input:valid ~ label,
+    textarea:focus ~ label,
+    textarea:valid ~ label {
+      top: -15px;
+      font-size: 12px;
+      color: white;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #CF0638;
+      color: white;
+      border: none;
+      font-size: 16px;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #e01f4d;
+    }
+
+     footer {
+            background-color: #4dbce9;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 60px;
+        }
+  </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+      const logo = document.getElementById('logo');
+      logo.style.left = '0';
+
+      function centerLogo() {
+        const centerX = (window.innerWidth - logo.offsetWidth) / 2;
+        logo.style.left = `${centerX}px`;
+        logo.style.opacity = 1;
+      }
+
+      setTimeout(centerLogo, 200);
+      window.addEventListener('resize', centerLogo);
+    });
+    </script>
+</head>
+<body>
+    <header>
+      <div class="logo-container">
+        <img src="../img/logoloja.png" alt="Logo da Loja" class="logo" id="logo">
+      </div>
+        <nav class="menu">
+            <ul>
+               <li><a href="../index.html">Início</a></li>
+               <li><a href="../pages/sobre.html">Sobre</a></li>
+               <li><a href="../pages/brinq.html">Brinquedos</a></li>
+               <li><a href="../pages/presente.html">Presente por Idade</a></li>
+               <li><a href="../pages/evento.html">Eventos</a></li>
+               <li><a href="../pages/form.html">Contato</a></li>
+                </ul>
+            </nav>
+        </header>
+    <section class="contato-container">
+    <div class="contato-esquerda">
+      <h2>Onde nos Encontrar?</h2>
+      <iframe src="https://www.google.com/maps/embed?pb=..." allowfullscreen loading="lazy"></iframe>
+      <div class="info-contato">
+        <p><strong>Telefone:</strong> (24) 3656-7904</p>
+        <p><strong>WhatsApp:</strong> (24) 99449-7422</p>
+        <p><strong>Endereço:</strong> Rua da Saudade, 449 - Bairro das Flores, São Paulo - SP</p>
+        <p><strong>CEP:</strong> 01234-567</p>
+        <p><strong>Funcionamento:</strong> Segunda à Sexta das 9h às 18h | Sábado das 9h às 13h</p>
+        <p><strong>Email:</strong> contato@funnybrinquedos.com.br</p>
+      </div>
+    </div>
+
+    <div class="contato-direita">
+      <div class="form-container">
+        <h2>Fale Conosco</h2>
+        <form>
+          <div class="form-group">
+            <input type="text" name="nome" required>
+            <label>Nome:</label>
+          </div>
+          <div class="form-group">
+            <input type="tel" name="telefone" required>
+            <label>Telefone:</label>
+          </div>
+          <div class="form-group">
+            <input type="email" name="email" required>
+            <label>Email:</label>
+          </div>
+          <div class="form-group">
+            <textarea name="mensagem" required></textarea>
+            <label>Mensagem:</label>
+          </div>
+          <button type="submit">Enviar</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+        <p>&copy; 2025 Funny Brinquedos. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>  
